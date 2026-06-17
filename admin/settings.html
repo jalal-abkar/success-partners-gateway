@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-i18n="settingsTitle">إعدادات التكامل والتحكم</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/src/settings.css">
+</head>
+<body>
+  <header class="top-gov-bar">
+    <div class="gov-container">
+      <div class="title-sub-block">
+        <h1 class="gov-title" data-i18n="settingsTitle">إعدادات التكامل والتحكم</h1>
+        <p class="gov-subtitle" data-i18n="devBy">تم التطوير والتصميم بواسطة المستشار:</p>
+      </div>
+      <div class="gov-controls">
+        <button id="btn-ar" onclick="I18n.setLanguage('ar')">العربية</button>
+        <button id="btn-en" onclick="I18n.setLanguage('en')">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content-wrapper">
+    <section class="glass-section">
+      <div class="section-title"><h3 data-i18n="general">عام</h3></div>
+      <div class="form-grid">
+        <label data-i18n="designerName">اسم المصمم (AR)</label>
+        <input id="designer_ar" type="text" placeholder="جلال أحمد محمد أبكر">
+
+        <label data-i18n="designerName">Designer name (EN)</label>
+        <input id="designer_en" type="text" placeholder="Jalal Ahmed Mohamed Abkar">
+
+        <label data-i18n="pageTitle">Default language</label>
+        <select id="defaultLang">
+          <option value="ar">العربية</option>
+          <option value="en">English</option>
+        </select>
+
+        <label data-i18n="defaultTheme">Default theme</label>
+        <select id="defaultTheme">
+          <option value="dark">Dark (Glass)</option>
+          <option value="light">Light (Glass)</option>
+          <option value="blue">Blue (Creative)</option>
+        </select>
+      </div>
+
+      <div class="actions-row">
+        <button id="saveSettings" class="btn-submit-exam" data-i18n="saveSettings">حفظ الإعدادات</button>
+        <button id="exportSettings" class="btn-google-login" data-i18n="exportSettings">تصدير الإعدادات (JSON)</button>
+        <button id="importSettings" class="btn-ai-voice" data-i18n="importSettings">استيراد إعدادات (JSON)</button>
+        <input id="importFile" type="file" accept="application/json" style="display:none">
+      </div>
+    </section>
+
+    <section class="glass-section">
+      <div class="section-title"><h3 data-i18n="integrations">التكاملات</h3></div>
+
+      <div class="form-grid">
+        <label>Google Auth</label>
+        <input id="googleClientId" type="text" placeholder="Google OAuth Client ID">
+        <label>OpenAI (provider)</label>
+        <input id="openaiKey" type="text" placeholder="OPENAI_API_KEY (env name)">
+        <label>Twilio WhatsApp (from)</label>
+        <input id="twilioFrom" type="text" placeholder="whatsapp:+123...">
+
+        <label data-i18n="social">Social - Instagram</label>
+        <input id="instagramLink" type="text" placeholder="https://instagram.com/...">
+        <label>Facebook</label>
+        <input id="facebookLink" type="text" placeholder="https://facebook.com/...">
+        <label>X / Twitter</label>
+        <input id="xLink" type="text" placeholder="https://x.com/...">
+        <label>Telegram</label>
+        <input id="telegramLink" type="text" placeholder="https://t.me/...">
+      </div>
+
+      <div class="actions-row">
+        <button id="testConnection" class="btn-ai-mic">Test connection</button>
+      </div>
+    </section>
+
+    <section class="glass-section">
+      <div class="section-title"><h3 data-i18n="pages">الصفحات</h3></div>
+      <div class="form-grid">
+        <label><input type="checkbox" id="pageHome" checked> <span data-i18n="navHome">Home</span></label>
+        <label><input type="checkbox" id="pageAdmin" checked> <span data-i18n="navAdmin">Admin</span></label>
+        <label><input type="checkbox" id="pageStudents" checked> <span data-i18n="navStudent">Students</span></label>
+        <label><input type="checkbox" id="pageChat" checked> Chat</label>
+        <label><input type="checkbox" id="pageExams" checked> Exams</label>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="gov-footer-designer">
+    <div class="footer-container">
+      <p class="designer-credits"><i class="fa-solid fa-code"></i> <span data-i18n="devBy">تم التطوير والتصميم بواسطة المستشار:</span> <span id="designerNameFooter">جلال أحمد محمد أبكر</span></p>
+    </div>
+  </footer>
+
+  <script src="/src/i18n.js"></script>
+  <script src="/src/settings.js"></script>
+</body>
+</html>
