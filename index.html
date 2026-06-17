@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بوابة شركاء النجاح - المنصة الدولية الذكية</title>
+    <!-- الخطوط والأيقونات العالمية الفاخرة -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- شريط الهوية الحكومي المضيء -->
+    <header class="top-gov-bar">
+        <div class="gov-container">
+            <div class="gov-identity">
+                <!-- الشعار الاختياري الذكي: اضغط عليه لرفع شعارك من الهاتف في أ�� وقت -->
+                <div class="school-logo-placeholder" onclick="document.getElementById('logoInput').click()">
+                    <i class="fa-solid fa-cloud-arrow-up" id="logoIcon"></i>
+                    <span id="logoTextHint">الشعار</span>
+                    <img id="chosenLogoImg" src="" alt="شعار المدرسة" style="display:none; width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                </div>
+                <input type="file" id="logoInput" accept="image/*" style="display: none;" onchange="previewSchoolLogo(event)">
+                
+                <div class="title-sub-block">
+                    <h1 class="gov-title">بوابة شركاء النجاح</h1>
+                    <p class="gov-subtitle"><i class="fa-solid fa-handshake"></i> المنصة التعليمية الحكومية الدولية</p>
+                </div>
+            </div>
+            
+            <div class="gov-controls">
+                <div class="lang-switcher">
+                    <button onclick="toggleLanguage('ar')">العربية</button>
+                    <button onclick="toggleLanguage('en')">EN</button>
+                </div>
+                <!-- زر الدخول الموحد الآمن عبر جوجل -->
+                <button class="btn-google-login" onclick="triggerGoogleAuth()">
+                    <i class="fa-brands fa-google"></i> <span id="loginText">دخول Google</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- أزرار التبديل الذكي بين الرتب والصلاحيات التعليمية -->
+    <nav class="main-nav-tabs">
+        <button class="nav-tab active" onclick="switchRole('guest')"><i class="fa-solid fa-house"></i> الرئيسية</button>
+        <button class="nav-tab" onclick="switchRole('admin')"><i class="fa-solid fa-user-shield"></i> لوحة الإدارة</button>
+        <button class="nav-tab" onclick="switchRole('teacher')"><i class="fa-solid fa-chalkboard-user"></i> شاشة المعلمين</button>
+        <button class="nav-tab" onclick="switchRole('student')"><i class="fa-solid fa-user-graduate"></i> الطلاب والنتائج</button>
+    </nav>
+    
+    <!-- الحاوية الرئيسية للمحتوى والديكورات الخيالية -->
+    <main class="main-content-wrapper">
+
+        <!-- معرض الوسائط المتعددة الفخم للمدرسة (صور وخلفيات وفيديوهات) -->
+        <section class="hero-showcase">
+            <div class="media-container">
+                <!-- مساحة الصورة الخلفية الاحترافية الجاهزة للتعديل لاحقاً -->
+                <div class="media-slot image-slot" id="photoZone">
+                    <p><i class="fa-solid fa-image"></i> مساحة الخلفية والصور الرسمية لشركاء النجاح</p>
+                </div>
+                <!-- مساحة الفيديو المدمج من اليوتيوب أو الفيسبوك -->
+                <div class="media-slot video-slot">
+                    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="فيديو المنصة الدولية" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        
+        <!-- نظام البحث الذكي المتطور (الاسم، الحرف، والشعبة) -->
+        <section class="smart-search-section">
+            <div class="section-title">
+                <h3><i class="fa-solid fa-magnifying-glass"></i> محرك البحث المدرسي السريع</h3>
+            </div>
+            <div class="search-box-grid">
+                <!-- البحث بالاسم أو الحرف الأول -->
+                <input type="text" id="searchName" placeholder="ابحث باسم الطالب، المدرس، أو الحرف الأول..." onkeyup="executeSmartSearch()">
+                
+                <!-- الفرز الذكي حسب الشعبة الدراسية -->
+                <select id="searchClass" onchange="executeSmartSearch()">
+                    <option value="">كل الشعب الدراسية</option>
+                    <option value="A">الشعبة أ (A)</option>
+                    <option value="B">الشعبة ب (B)</option>
+                    <option value="C">الشعبة ج (C)</option>
+                </select>
+            </div>
+            <!-- المكان الذي ستظهر فيه نتائج البحث تلقائياً -->
+            <div id="searchResults" class="search-results-output"></div>
+        </section>
+        
+        <!-- نظام بطاقة الهوية الرقمية الدولية للمدرسة (ID Card) -->
+        <section class="digital-id-section">
+            <div class="section-title">
+                <h3><i class="fa-solid fa-id-card"></i> كرت الهوية الرقمية والماسح الذكي</h3>
+            </div>
+            <div class="id-card-glass">
+                <div class="id-header">
+                    <h5>بوابة شركاء النجاح</h5>
+                    <span class="status-badge"><span class="live-dot"></span> نشط حكومي</span>
+                </div>
+                <div class="id-body">
+                    <div class="id-photo">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div class="id-info">
+                        <p><strong>الاسم:</strong> جلال أحمد محمد</p>
+                        <p><strong>الصفة:</strong> مطور المنصة / مشرف</p>
+                        <p><strong>الشعبة الدراسية:</strong> الإدارة العليا</p>
+                        <p><strong>الرقم الرقمي:</strong> #2026-990</p>
+                    </div>
+                    <div class="id-qr">
+                        <i class="fa-solid fa-qrcode"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- منصة الاختبارات الدولية الفورية وحماية الشهادات -->
+        <section class="exam-system-section">
+            <div class="section-title">
+                <h3><i class="fa-solid fa-file-signature"></i> منصة الاختبارات الذكية وشاشات التصحيح</h3>
+            </div>
+            
+            <div class="exam-card-glass">
+                <div class="exam-header-badge">مسار التقييم الدولي المتقدم</div>
+                <h4>اختبار نموذج الذكاء الاصطناعي واللغات التجريبي</h4>
+                
+                <form id="studentExamForm" onsubmit="submitExam(event)">
+                    <div class="question-block">
+                        <p class="q-text">السؤال الأول: ما هي لغة البرمجة الأساسية لتفاعل واجهات الموقع?</p>
+                        <label class="radio-option">
+                            <input type="radio" name="q1" value="correct"> <span>JavaScript (تفاعلية ذكية)</span>
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="q1" value="wrong"> <span>HTML التقليدي فقط</span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit-exam">
+                        <i class="fa-solid fa-paper-plane"></i> إرسال الإجابة للتصحيح الفوري بالذكاء الاصطناعي
+                    </button>
+                </form>
+                
+                <div id="examFeedback" class="exam-feedback-area" style="display: none;">
+                    <h5><i class="fa-solid fa-certificate"></i> النتيجة والشهادة الرقمية المعتمدة</h5>
+                    <p id="gradeResult"></p>
+                    <div class="secured-watermark">
+                        <i class="fa-solid fa-shield-halved"></i> ختم رقمي آمن (غير قابل للتزوير)
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- مساعد الذكاء الاصطناعي المتحدث والمترجم -->
+        <section class="ai-voice-assistant">
+            <div class="section-title">
+                <h3><i class="fa-solid fa-microchip"></i> المساعد الذكي والمترجم الصو��ي الفوري</h3>
+            </div>
+            
+            <div class="ai-grid">
+                <div class="ai-box-glass">
+                    <h5><i class="fa-solid fa-volume-high"></i> النطق الآلي للدروس (Text-to-Speech)</h5>
+                    <textarea id="textToSpeak" placeholder="اكتب أو الصق أي درس هنا ليقوم الذكاء الاصطناعي بنطقه وإملاءه بصوت واضح..."></textarea>
+                    <button type="button" onclick="speakTextNow()" class="btn-ai-voice">
+                        <i class="fa-solid fa-play"></i> انطق النص المكتوب الآن
+                    </button>
+                </div>
+
+                <div class="ai-box-glass">
+                    <h5><i class="fa-solid fa-microphone"></i> الإملاء الصوتي والمترجم الفوري المباشر</h5>
+                    <button type="button" id="micBtn" onclick="startSpeechRecognition()" class="btn-ai-mic">
+                        <i class="fa-solid fa-microphone"></i> اضغط على المايك وتحدث (إملاء وترجمة)
+                    </button>
+                    <p id="speechOutput" class="speech-output-text">النص المستمع والترجمة الآلية سيظهران هنا بدقة...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- مركز المجموعات التفاعلية والاتصال المرئي -->
+        <section class="communication-hub-section">
+            <div class="section-title">
+                <h3><i class="fa-solid fa-comments"></i> مركز التواصل الدولي والاتصال المرئي</h3>
+            </div>
+            
+            <div class="chat-grid-container">
+                <div class="chat-channels-glass">
+                    <h5><i class="fa-solid fa-layer-group"></i> القنوات الدراسية</h5>
+                    <ul class="channels-list">
+                        <li class="channel-item active" onclick="switchChannel('general')"><i class="fa-solid fa-hashtag"></i> المناقشة العامة</li>
+                        <li class="channel-item" onclick="switchChannel('teachers')"><i class="fa-solid fa-lock"></i> غرفة المعلمين والإدارة</li>
+                        <li class="channel-item" onclick="switchChannel('students-qa')"><i class="fa-solid fa-graduation-cap"></i> أسئلة الطلاب ودعم النجاح</li>
+                    </ul>
+                </div>
+                
+                <div class="chat-area-glass">
+                    <div class="chat-header-controls">
+                        <span id="currentChannelTitle"><i class="fa-solid fa-hashtag"></i> المناقشة العامة</span>
+                        <div class="call-action-buttons">
+                            <button type="button" onclick="startVoiceCall()" class="btn-call audio"><i class="fa-solid fa-phone"></i></button>
+                            <button type="button" onclick="startVideoCall()" class="btn-call video"><i class="fa-solid fa-video"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div id="chatMessagesBox" class="chat-messages-display">
+                        <div class="message-row system">
+                            <span class="system-msg">تشفير آمن حكومي: تم تأمين قنوات بوابة شركاء النجاح بنجاح.</span>
+                        </div>
+                    </div>
+                    
+                    <form id="chatInputForm" onsubmit="sendChatMessage(event)" class="chat-input-row">
+                        <input type="text" id="chatMessageText" placeholder="اكتب رسالتك هنا للمجموعة..." required>
+                        <button type="submit" class="btn-send-message"><i class="fa-solid fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </section> 
+        
+        <!-- صندوق الشكاوى والمقترحات السري والمشفر للمدير -->
+        <section class="secure-complaints-section">
+            <div class="section-title">
+                <h3><i class="fa-solid fa-vault"></i> صندوق المقترحات والشكاوى المشفر</h3>
+            </div>
+            <div class="complaint-box-glass">
+                <p class="complaint-hint"><i class="fa-solid fa-lock"></i> هذه الرسالة تذهب مباشرة إلى لوحة تحكم المدير العام ولا يمكن لأي موظف أو مدرس آخر رؤيتها.</p>
+                <form id="complaintForm" onsubmit="submitSecureComplaint(event)">
+                    <input type="text" id="complaintSender" placeholder="الاسم (اختياري، يمكنك تركه فارغاً لإرسال مجهول)">
+                    <textarea id="complaintText" placeholder="اكتب مقترحك أو شكواك هنا بكل سرية وأمان..." required></textarea>
+                    <button type="submit" class="btn-submit-complaint">
+                        <i class="fa-solid fa-shield-halved"></i> إرسال الشكوى وتعميتها وتشفيرها
+                    </button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- تذييل الصفحة الفخم وتوقيع مصمم ومطور المنصة -->
+    <footer class="gov-footer-designer">
+        <div class="footer-container">
+            <p class="designer-credits">
+                <i class="fa-solid fa-code"></i> تم التطوير والتصميم بواسطة المستشار: 
+                <span class="designer-name">جلال أحمد محمد أبكر</span>
+            </p>
+            <p class="copyright-text">© 2026 جميع الحقوق الرقمية محفوظة لـ بوابة شركاء النجاح</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
