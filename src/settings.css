@@ -1,0 +1,42 @@
+/* src/settings.css
+   Styles for Admin Settings (glass UI, blue theme option)
+*/
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  align-items: center;
+}
+
+.form-grid label {
+  font-weight: 700;
+  color: #c9d1d9;
+}
+
+.form-grid input, .form-grid select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(13,17,23,0.6);
+  color: #fff;
+}
+
+.actions-row { display:flex; gap:12px; margin-top:16px; }
+
+.glass-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.05);
+  padding: 18px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+}
+
+/* Blue theme example */
+body.theme-blue .top-gov-bar { border-bottom-color: #1f6feb; }
+body.theme-blue .nav-tab.active { background:#1f6feb }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-grid { grid-template-columns: 1fr; }
+}
