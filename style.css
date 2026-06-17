@@ -1,0 +1,48 @@
+/* style.css - Basic RTL responsive styles for the provided index.html */
+:root{
+  --accent:#0b74de;
+  --glass: rgba(255,255,255,0.7);
+  --muted:#666;
+  --card-bg: rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:'Cairo', 'Poppins', system-ui, sans-serif;background:linear-gradient(180deg,#f3f6fb,#ffffff);color:#222}
+header.top-gov-bar{background:var(--accent);color:#fff;padding:14px 0}
+.gov-container{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 16px}
+.gov-identity{display:flex;align-items:center;gap:12px}
+.school-logo-placeholder{width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer}
+.school-logo-placeholder i{font-size:20px;color:#fff}
+.title-sub-block .gov-title{margin:0;font-size:20px;font-weight:700}
+.gov-subtitle{margin:0;font-size:13px;opacity:0.95}
+.gov-controls{display:flex;gap:10px;align-items:center}
+.lang-switcher button{background:transparent;border:1px solid rgba(255,255,255,0.15);color:#fff;padding:6px 8px;border-radius:6px;cursor:pointer}
+.btn-google-login{background:#fff;border:none;color:var(--accent);padding:8px 12px;border-radius:8px;cursor:pointer;font-weight:600}
+.main-nav-tabs{display:flex;gap:6px;padding:12px 16px;background:transparent;justify-content:center}
+.nav-tab{background:#fff;border:none;padding:10px 12px;border-radius:8px;cursor:pointer}
+.nav-tab.active{box-shadow:0 2px 6px rgba(0,0,0,0.08)}
+.main-content-wrapper{max-width:1100px;margin:18px auto;padding:0 16px}
+.hero-showcase .media-container{display:flex;gap:12px}
+.media-slot{background:#fff;border-radius:8px;padding:18px;min-height:180px;flex:1;display:flex;align-items:center;justify-content:center;color:var(--muted)}
+.video-slot iframe{border-radius:8px}
+.search-box-grid{display:flex;gap:8px;margin:12px 0}
+.search-box-grid input,.search-box-grid select{padding:10px;border-radius:8px;border:1px solid #e6eef9;flex:1}
+.search-results-output{min-height:40px;margin-top:8px}
+.section-title h3{margin:0 0 8px 0}
+.id-card-glass{background:var(--glass);border-radius:10px;padding:12px;box-shadow:0 6px 20px rgba(11,116,222,0.06)}
+.id-body{display:flex;gap:12px;align-items:center}
+.id-photo{width:96px;height:96px;border-radius:8px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:36px;color:var(--accent)}
+.exam-card-glass{background:#fff;border-radius:10px;padding:12px;margin-top:8px}
+.btn-submit-exam{background:var(--accent);color:#fff;border:none;padding:10px 16px;border-radius:8px;cursor:pointer}
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:8px}
+.ai-box-glass{background:#fff;padding:12px;border-radius:8px}
+.chat-grid-container{display:flex;gap:12px}
+.chat-channels-glass{width:220px;background:#fff;padding:12px;border-radius:8px}
+.chat-area-glass{flex:1;background:#fff;padding:12px;border-radius:8px;display:flex;flex-direction:column}
+.chat-messages-display{height:240px;overflow:auto;background:#f8fbff;border-radius:6px;padding:10px;margin-bottom:8px}
+.chat-input-row{display:flex;gap:8px}
+.chat-input-row input{flex:1;padding:10px;border-radius:8px;border:1px solid #e6eef9}
+.btn-send-message{background:var(--accent);color:#fff;border:none;padding:8px 12px;border-radius:8px;cursor:pointer}
+.complaint-box-glass{background:#fff;padding:12px;border-radius:8px}
+.gov-footer-designer{margin-top:22px;padding:18px 0;background:linear-gradient(180deg,#fff,#f6f9ff)}
+.footer-container{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;justify-content:space-between;align-items:center}
+@media(max-width:800px){.gov-container,.footer-container,.main-content-wrapper{padding:0 12px}.ai-grid{grid-template-columns:1fr}.chat-grid-container{flex-direction:column}.chat-channels-glass{width:100%}}
